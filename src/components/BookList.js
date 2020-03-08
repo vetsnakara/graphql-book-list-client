@@ -1,21 +1,12 @@
 import React from "react";
-import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-
-const getBooksQuery = gql`
-  {
-    books {
-      id
-      name
-    }
-  }
-`;
+import { getBooksQuery } from "../queries";
 
 const BookList = () => {
   const { loading, error, data } = useQuery(getBooksQuery);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <p>Loading books ...</p>;
+  if (error) return <p>Error w/ loading books</p>;
 
   return (
     <div>
@@ -24,7 +15,6 @@ const BookList = () => {
           <li key={book.id}>{book.name}</li>
         ))}
       </ul>
-      ;
     </div>
   );
 };

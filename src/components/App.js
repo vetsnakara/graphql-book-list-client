@@ -3,6 +3,7 @@ import React from "react";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 import BookList from "./BookList";
+import AddBook from "./AddBook";
 
 const client = new ApolloClient({
   // todo: use env variable
@@ -15,6 +16,7 @@ const App = () => {
       <div id="main">
         <h1>Reading List</h1>
         <BookList />
+        <AddBook />
       </div>
     </ApolloProvider>
   );
