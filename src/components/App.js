@@ -1,13 +1,12 @@
-import ApolloClient from "apollo-boost";
 import React from "react";
+import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 import BookList from "./BookList";
 import AddBook from "./AddBook";
 
 const client = new ApolloClient({
-  // todo: use env variable
-  uri: "http://localhost:4000/graphql"
+  uri: process.env.GQL_URI
 });
 
 const App = () => {

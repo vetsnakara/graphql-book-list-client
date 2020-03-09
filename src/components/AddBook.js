@@ -44,6 +44,10 @@ const AddBook = () => {
     setState(initState);
   };
 
+  const validate = () => {
+    return state.name && state.genre && state.authorId;
+  };
+
   return (
     <form id="add-book" onSubmit={handleSubmit}>
       <div className="field">
@@ -69,19 +73,21 @@ const AddBook = () => {
       <div className="field">
         <label>Author:</label>
         <select name="authorId" value={state.authorId} onChange={handleChange}>
-          {loading ? (
-            <option>Loading authors ...</option>
-          ) : (
+          <option key="unselected" value="">
+            Select an author
+          </option>
+          {!loading &&
             data.authors.map(author => (
               <option key={author.id} value={author.id}>
                 {author.name}
               </option>
-            ))
-          )}
+            ))}
         </select>
       </div>
 
-      <button type="submit">+</button>
+      <button type="submit" disabled={!validate()}>
+        +
+      </button>
     </form>
   );
 };
