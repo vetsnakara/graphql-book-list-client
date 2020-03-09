@@ -5,8 +5,6 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import BookList from "./BookList";
 import AddBook from "./AddBook";
 
-console.log(process.env.GQL_URI);
-
 const client = new ApolloClient({
   uri: process.env.GQL_URI
 });
